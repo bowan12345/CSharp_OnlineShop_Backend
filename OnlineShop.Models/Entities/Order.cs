@@ -8,8 +8,6 @@ namespace OnlineShop.Models.Entities
 {
     public record Order
     {
-        // order id
-        public string Id { get; init; }
 
         // order number
         public long OrderNo { get; init; }

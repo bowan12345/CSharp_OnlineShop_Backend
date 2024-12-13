@@ -8,8 +8,6 @@ namespace OnlineShop.Models.Entities
 {
     public record Category
     {
-        // category id
-        public int Id { get; init; }
 
         // parent id, 0: root
         public int? ParentId { get; init; }

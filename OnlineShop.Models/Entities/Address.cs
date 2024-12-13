@@ -8,8 +8,6 @@ namespace OnlineShop.Models.Entities
 {
     public record Address
     {
-        // address id
-        public string Id { get; init; }
 
         // user id
         public string UserId { get; init; }

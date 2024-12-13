@@ -8,8 +8,6 @@ namespace OnlineShop.Models.Entities
 {
     public record Cart
     {
-        // cart id
-        public string Id { get; init; }
 
         // product id
         public string ProductId { get; init; }

@@ -9,6 +9,10 @@ namespace OnlineShop.Models.Entities
 {
     public record BaseEntity
     {
+
+        // id
+        public string Id { get; init; }
+
         // status of availability: 0 = unavailable, 1 = available
         public int Status { get; init; }
 

@@ -1,5 +1,5 @@
 ﻿using OnlineShop.Models.Entities;
-using OnlineShop.Models.Vo;
+using OnlineShop.Models.ViewModels;
 
 namespace OnlineShop.IRepository
 {

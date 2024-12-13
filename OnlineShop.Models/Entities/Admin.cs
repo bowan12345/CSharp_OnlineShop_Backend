@@ -6,8 +6,6 @@ namespace OnlineShop.Models.Entities
     [SugarTable("os_admin")]
     public record Admin:BaseEntity
     {
-        // admin id
-        public string Id { get; init; }
 
         // username
         public string Username { get; init; }

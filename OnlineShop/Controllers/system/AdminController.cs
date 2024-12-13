@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.IRepository;
-using OnlineShop.Models.Vo;
+using OnlineShop.Models.ViewModels;
 
 namespace OnlineShop.Admin.Controllers.user
 {

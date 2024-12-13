@@ -1,11 +1,7 @@
-using Autofac.Core;
 using Autofac;
-using OnlineShop.IRepository;
-using OnlineShop.Repository;
 using Autofac.Extensions.DependencyInjection;
-using OnlineShop.Admin;
 using SqlSugar;
-using System.ComponentModel;
+using OnlineShop.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,7 +45,8 @@ builder.Host.ConfigureContainer<ContainerBuilder>(container =>
     #endregion
 
 });
-
+// add AutoMapper
+builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
 var app = builder.Build();
 

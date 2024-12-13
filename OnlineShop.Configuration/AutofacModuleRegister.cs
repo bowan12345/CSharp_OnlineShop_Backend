@@ -1,7 +1,7 @@
 ﻿using Autofac;
 using System.Reflection;
 
-namespace OnlineShop.Admin
+namespace OnlineShop.Configuration
 {
     public class AutofacModuleRegister:Autofac.Module
     {

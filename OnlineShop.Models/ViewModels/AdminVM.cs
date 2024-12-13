@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Models.Vo
+namespace OnlineShop.Models.ViewModels
 {
     public record AdminVM
     {

@@ -8,8 +8,6 @@ namespace OnlineShop.Models.Entities
 {
     public record Product
     {
-        // product id
-        public string Id { get; init; }
 
         // category id
         public int CategoryId { get; init; }

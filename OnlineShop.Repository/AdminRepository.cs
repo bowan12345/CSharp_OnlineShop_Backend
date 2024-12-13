@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.IRepository;
 using OnlineShop.Models.Entities;
-using OnlineShop.Models.Vo;
+using OnlineShop.Models.ViewModels;
 using SqlSugar;
 
 namespace OnlineShop.Repository
