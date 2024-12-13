@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Models.Vo
 {
-    public class AdminVo
+    public record AdminVM
     {
+        // username
+        public string Username { get; set; }
 
+        // password
+        public string Password { get; set; }
     }
 }

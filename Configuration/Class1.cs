@@ -1,4 +1,4 @@
-﻿namespace OnlineShop.Repository
+﻿namespace Configuration
 {
     public class Class1
     {

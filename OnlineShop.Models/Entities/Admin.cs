@@ -1,5 +1,9 @@
-﻿namespace OnlineShop.Models.Entities
+﻿using SqlSugar;
+
+namespace OnlineShop.Models.Entities
 {
+
+    [SugarTable("os_admin")]
     public record Admin:BaseEntity
     {
         // admin id

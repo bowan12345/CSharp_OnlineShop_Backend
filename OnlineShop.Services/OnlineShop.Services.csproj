@@ -6,4 +6,13 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="SqlSugarCore" Version="5.1.4.171" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.IServices\OnlineShop.IServices.csproj" />
+    <ProjectReference Include="..\OnlineShop.Models\OnlineShop.Models.csproj" />
+  </ItemGroup>
+
 </Project>
