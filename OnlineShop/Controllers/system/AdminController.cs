@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnlineShop.IRepository;
+using OnlineShop.Common;
+using OnlineShop.IServices;
+using OnlineShop.Models.Dto;
 using OnlineShop.Models.ViewModels;
 
 namespace OnlineShop.Admin.Controllers.user
@@ -9,19 +11,22 @@ namespace OnlineShop.Admin.Controllers.user
     public class AdminController: ControllerBase
     {
 
-        private  readonly IAdminRepository adminRepository;
+        private readonly IAdminService adminService;
 
-        public AdminController(IAdminRepository adminRepository)
+        public AdminController(IAdminService adminService)
         {
-            this.adminRepository = adminRepository;
+            this.adminService = adminService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetHello()
+        [HttpPost]
+        public async Task<ApiResult<AdminVM>> AdminLogin([FromBody]AdminLoginDto adminLoginDto)
         {
-            var admin = await adminRepository.GetAdminByUsername("admin");
-            Console.WriteLine(admin);
-            return Ok(admin);
+            var admin = await adminService.AdminLogin(adminLoginDto);
+            if (admin == null)
+            {
+                return ApiResult<AdminVM>.Failed(null, "Username or Password Incorrect!");
+            }
+            return new ApiResult<AdminVM>{ Data = admin };
         }
 
     }

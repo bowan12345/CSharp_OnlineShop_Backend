@@ -22,5 +22,11 @@ namespace OnlineShop.Repository
             var admin = DbClient.Queryable<Admin>().Where(x => x.Username == username).Single();
             return admin;
         }
+
+        public async Task<Admin?> GetAdminByUsernameAndPassword(string username, string password)
+        {
+            var admin = await DbClient.Queryable<Admin>().Where(x => x.Username == username && x.Password == password).SingleAsync();
+            return admin;
+        }
     }
 }

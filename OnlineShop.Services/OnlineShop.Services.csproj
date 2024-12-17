@@ -11,8 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\OnlineShop.IRepository\OnlineShop.IRepository.csproj" />
+	<ProjectReference Include="..\OnlineShop.Configuration\OnlineShop.Configuration.csproj" />
     <ProjectReference Include="..\OnlineShop.IServices\OnlineShop.IServices.csproj" />
     <ProjectReference Include="..\OnlineShop.Models\OnlineShop.Models.csproj" />
+    <ProjectReference Include="..\OnlineShop.Repository\OnlineShop.Repository.csproj" />
   </ItemGroup>
 
 </Project>

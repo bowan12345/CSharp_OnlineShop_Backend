@@ -15,7 +15,6 @@
   <ItemGroup>
     <ProjectReference Include="..\OnlineShop.IRepository\OnlineShop.IRepository.csproj" />
     <ProjectReference Include="..\OnlineShop.Models\OnlineShop.Models.csproj" />
-    <ProjectReference Include="..\OnlineShop.Services\OnlineShop.Services.csproj" />
   </ItemGroup>
 
 </Project>
