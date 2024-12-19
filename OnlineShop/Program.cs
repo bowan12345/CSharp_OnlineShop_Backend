@@ -2,6 +2,8 @@ using Autofac;
 using Autofac.Extensions.DependencyInjection;
 using SqlSugar;
 using OnlineShop.Configuration;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,8 +50,74 @@ builder.Host.ConfigureContainer<ContainerBuilder>(container =>
 // add AutoMapper
 builder.Services.AddAutoMapper(typeof(AutoMapperConfiguration));
 
+// loading  CORS from appsetting.json
+var corsConfig = builder.Configuration.GetSection("Cors");
+
+// add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DynamicCorsPolicy", policy =>
+    {
+        var allowedOrigins = corsConfig.GetSection("AllowedOrigins").Get<string[]>();
+        if (allowedOrigins != null && allowedOrigins.Length > 0)
+        {
+            policy.WithOrigins(allowedOrigins); 
+        }
+        if (corsConfig.GetValue<bool>("AllowAnyHeader"))
+        {
+            policy.AllowAnyHeader();
+        }
+
+        if (corsConfig.GetValue<bool>("AllowAnyMethod"))
+        {
+            policy.AllowAnyMethod();
+        }
+
+        if (corsConfig.GetValue<bool>("AllowCredentials"))
+        {
+            policy.AllowCredentials();
+        }
+    });
+});
+
+// add jwt
+builder.Services.AddJwtAuthentication(builder.Configuration);
+builder.Services.AddScoped<JWTHelper>();
+
+// add jwt Bearer authentication into  Swagger
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        Description = "Please enter a valid JWT token"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 var app = builder.Build();
 
+// Use CORS middleware
+app.UseCors("DynamicCorsPolicy");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -60,6 +128,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

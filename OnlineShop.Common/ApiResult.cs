@@ -17,7 +17,7 @@
         public static ApiResult<T> Success(T data)
         {
             return new ApiResult<T> { Data = data, Message = "Success", ResponseCode = ResponseCode.Success };
-            }
+        }
 
 /*        public static ApiResult<T> Error(T data, string message = "Error", ResponseCode responseCode = ResponseCode.Error)
         {
@@ -44,6 +44,11 @@
         public static ApiResult<T> ParameterError(T data)
         {
             return new ApiResult<T> { Data = data, Message = "ParameterError", ResponseCode = ResponseCode.ParameterError };
+        }
+
+        public static ApiResult<T> Unauthorized(T data)
+        {
+            return new ApiResult<T> { Data = data, Message = "Unauthorized", ResponseCode = ResponseCode.Unauthorized };
         }
 
     }

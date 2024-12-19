@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Common;
 using OnlineShop.IServices;
 using OnlineShop.Models.Dto;
@@ -18,6 +19,7 @@ namespace OnlineShop.Admin.Controllers.user
             this.adminService = adminService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ApiResult<AdminVM>> AdminLogin([FromBody]AdminLoginDto adminLoginDto)
         {

@@ -23,4 +23,9 @@
     <ProjectReference Include="..\OnlineShop.Services\OnlineShop.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Buyer\" />
+    <Folder Include="Controllers\Seller\" />
+  </ItemGroup>
+
 </Project>
